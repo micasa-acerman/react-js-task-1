@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #eaeaea;
+}
+.posts {
+  max-width: 400px;
+  margin: 20px auto;
+}
+.item {
+  background: #fff;
+  padding: 16px;
+  transition: transform 0.25s ease;
+  cursor: pointer;
+}
+.posts > .item:not(:last-child) {
+  border-bottom: 1px solid #eaeaea;
+}
+.item:hover {
+  transform: scale(1.1);
+}
+.item.active {
+  background-color: #eaffff;
+  transform: scale(1.1);
+}

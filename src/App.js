@@ -1,41 +1,57 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
-const posts = [
+const initialTasks = [
   {
     id: '1',
-    title: 'First post',
-    description: 'Lorem ipsum'
+    name: 'тестовое задание 1',
+    checked: false
   },
   {
     id: '2',
-    title: 'Second post',
-    description: 'Lorem ipsum'
-  },
-  {
-    id: '3',
-    title: 'Third post',
-    description: 'Lorem ipsum'
+    name: 'тестовое задание 2',
+    checked: false
   }
 ];
 
 export default function App() {
-  const [selectedPostId, setPostId] = useState();
-
+  const [tasks, setTasks] = useState(initialTasks);
   return (
-    <ul className="posts">
-      {posts
-        .filter(p => (selectedPostId ? p.id == selectedPostId : true))
-        .map(post => (
-          <div
-            key={post.id}
-            className={`item ${selectedPostId === post.id ? 'active' : ''}`}
-            onClick={() => setPostId(selectedPostId ? null : post.id)}
-          >
-            <h3>{post.title}</h3>
-            <p>{post.description}</p>
-          </div>
-        ))}
-    </ul>
+    <div className="container">
+      <h2>Todo</h2>
+      {tasks.length ? (
+        <ul className="posts">
+          {tasks.map(task => (
+            <div key={task.id} className="posts__item">
+              <input
+                type="checkbox"
+                checked={task.checked}
+                onChange={e => {
+                  setTasks([
+                    ...tasks.filter(t => t.id !== task.id),
+                    { ...task, checked: e.target.checked }
+                  ]);
+                }}
+              />
+              <div className="posts__inner">
+                <h4
+                  style={{
+                    textDecoration: 'text-decoration'
+                  }}
+                >
+                  {task.name}
+                </h4>
+              </div>
+            </div>
+          ))}
+        </ul>
+      ) : (
+        <div className="alert">Empty</div>
+      )}
+
+      <button onClick={() => setTasks(tasks.slice(0, tasks.length - 1))}>
+        Remove last
+      </button>
+    </div>
   );
 }

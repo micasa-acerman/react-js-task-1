@@ -5,23 +5,31 @@
 body {
   background-color: #eaeaea;
 }
-.posts {
+.container {
   max-width: 400px;
   margin: 20px auto;
-}
-.item {
   background: #fff;
-  padding: 16px;
-  transition: transform 0.25s ease;
-  cursor: pointer;
+  padding: 20px;
 }
-.posts > .item:not(:last-child) {
+.container > *:not(:last-child) {
+  margin-bottom: 10px;
+}
+.posts__item {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+}
+.posts__item > *:not(:last-child) {
+  margin-right: 8px;
+}
+.posts > .posts__item:not(:last-child) {
   border-bottom: 1px solid #eaeaea;
 }
-.item:hover {
-  transform: scale(1.1);
+button {
+  padding: 4px;
+  border: 0;
 }
-.item.active {
-  background-color: #eaffff;
-  transform: scale(1.1);
+.alert {
+  padding: 16px;
+  border-radius: 10px;
 }

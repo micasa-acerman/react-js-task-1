@@ -6,9 +6,11 @@ function Hello() {
   const [show, setShow] = useState(false);
 
   return (
-    <div>
-      {show ? 'Привет' : 'Пока'} {name}
-    </div>
+    <ul>
+      {['html', 'css', 'js', 'php'].map(i => (
+        <li key={i}>{i}</li>
+      ))}
+    </ul>
   );
 }
 

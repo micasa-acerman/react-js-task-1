@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 function Hello() {
-  const [name, setName] = useState('Ivan');
-  const [show, setShow] = useState(false);
+  const digits = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
-    <ul>
-      {['html', 'css', 'js', 'php'].map(i => (
-        <li key={i}>{i}</li>
+    <div>
+      {digits.map((d, i) => (
+        <>
+          <span id={`${i}`}>{d + 3}</span>
+          <br />
+        </>
       ))}
-    </ul>
+    </div>
   );
 }
 
